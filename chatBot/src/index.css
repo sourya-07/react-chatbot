@@ -51,7 +51,7 @@ body {
 .header-info .logo-text {
     color: #fff;
     font-size: 1.31rem;
-    font-weight: 600%;
+    font-weight: 600;
 }
 
 .chat-header button {
@@ -66,12 +66,27 @@ body {
     border-radius: 50%;
     margin-left: -10px;
     background: #593bab;
-    transition: 0.2 s ease;
+    transition: 0.2s ease;
 }
 
 .chat-header button:hover {
     background: #593bab;
+}
 
+/* Error message */
+.error-message {
+    background-color: #ffebee;
+    color: #d32f2f;
+    padding: 10px 15px;
+    margin: 0 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .chat-body {
@@ -112,6 +127,24 @@ body {
     font-size: 0.95rem;
 }
 
+/* Thinking animation */
+.message-text.thinking {
+    position: relative;
+    min-width: 80px;
+}
+
+.thinking-dots {
+    display: inline-block;
+    animation: thinking 1.5s infinite;
+}
+
+@keyframes thinking {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+    100% { content: "."; }
+}
+
 .chat-body .user-message {
     flex-direction: column;
     align-items: flex-end;
@@ -138,6 +171,7 @@ body {
     border-radius: 32px;
     outline: 1px solid #cccce5;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.06);
+    transition: outline 0.3s ease;
 }
 
 .chat-footer .chat-form:focus-within {
@@ -154,6 +188,11 @@ body {
     font-size: 0.95rem;
 }
 
+.chat-form .message-input:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
 .chat-form button {
     height: 35px;
     width: 35px;
@@ -165,13 +204,17 @@ body {
     color: #fff;
     flex-shrink: 0;
     margin-right: 6px;
-    margin-right: 6px;
     border-radius: 50%;
     background: #6D4FC2;
     transition: 0.2s ease;
 }
 
-.chat-form button:hover {
+.chat-form button:disabled {
+    background: #9e8ad0;
+    cursor: not-allowed;
+}
+
+.chat-form button:hover:not(:disabled) {
     background: #593bab;
 }
 
