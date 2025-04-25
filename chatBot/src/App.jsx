@@ -104,7 +104,7 @@ const App = () => {
         <div className="chat-body">
           <div className="message bot-message">
             <ChatbotIcon />
-            <p className="message-text" style={{ 'background': '#f5f5f5', 'borderRadius': '13px 13px 3px 13px' }}>
+            <p className="message-text">
               Hey there ✌️ <br /> How can I help you today?
             </p>
           </div>
