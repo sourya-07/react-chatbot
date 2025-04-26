@@ -23,19 +23,22 @@ const App = () => {
     setIsLoading(true);
     setError(null);
     
-    // Get the last user message
-    const lastUserMessage = history.find(msg => msg.role === "user" && msg.text !== "Thinking...");
+    // Format the entire conversation history for the API
+    const formattedHistory = history
+      .filter(msg => msg.text !== "Thinking...")
+      .map(msg => ({
+        role: msg.role,
+        parts: [{ text: msg.text }]
+      }));
     
-    // Format the request body to match the curl example
+    // Format the request body to include the entire conversation
     const requestOptions = {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        contents: [{
-          parts: [{ text: lastUserMessage.text }]
-        }]
+        contents: formattedHistory
       })
     };
     
