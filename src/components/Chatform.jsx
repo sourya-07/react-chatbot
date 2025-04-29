@@ -9,7 +9,7 @@ const Chatform = ({ chatHistory, setChatHistory, generateBotResponse, isLoading 
         const userMessage = inputValue.trim();
         if (!userMessage || isLoading) return;
 
-        // Clear input
+
         setInputValue("");
         inputRef.current.value = "";
 

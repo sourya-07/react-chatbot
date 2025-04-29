@@ -9,7 +9,6 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Clear error after 5 seconds
   useEffect(() => {
     if (error) {
       const timer = setTimeout(() => {
@@ -57,7 +56,6 @@ const App = () => {
 
       const botResponse = data.candidates[0].content.parts[0].text;
       
-      // Update chat history with the bot's response
       setChatHistory(prevHistory => 
         prevHistory.map(msg => 
           msg.text === "Thinking..." ? { role: "model", text: botResponse } : msg
@@ -67,7 +65,6 @@ const App = () => {
       console.error("API Error:", error);
       setError(error.message || "An unexpected error occurred");
       
-      // Update chat history with error message
       setChatHistory(prevHistory => 
         prevHistory.map(msg => 
           msg.text === "Thinking..." ? { 
